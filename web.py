@@ -3,8 +3,7 @@
 
 from flask import Flask, flash, redirect, render_template, request, session, abort
 from random import randint
-import urllib.request
-
+from six.moves.urllib.request import urlopen
 
 def shutdown_server():
     func = request.environ.get('werkzeug.server.shutdown')
@@ -25,7 +24,7 @@ def shutdown():
 @myapp.route("/")
 def hello():
     #    return name
-    external_ip = urllib.request.urlopen('https://checkip.amazonaws.com/').read().decode('utf8')
+    external_ip = urlopen('https://checkip.amazonaws.com/').read().decode('utf8')
     return render_template(
         'test.html', **locals())
 
