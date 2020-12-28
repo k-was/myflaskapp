@@ -14,7 +14,7 @@ class TestMyApp(unittest.TestCase):
     def test_main(self):
         rv = self.app.get('/')
         assert rv.status == '200 OK'
-        assert b'Sweet' in rv.data
+        assert b'My pipeline is working!' in rv.data
         #assert False
 
     def test_404(self):
